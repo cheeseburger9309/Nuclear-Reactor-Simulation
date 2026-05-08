@@ -67,11 +67,8 @@ struct VertexOutput { @builtin(position) position: vec4<f32>, @location(0) color
 
 @vertex
 fn vertexMain(@builtin(vertex_index) vIdx: u32, @builtin(instance_index) iIdx: u32) -> VertexOutput {
-    
     var pos = array<vec2<f32>, 6>(vec2<f32>(-1,-1), vec2<f32>(1,-1), vec2<f32>(-1,1), vec2<f32>(-1,1), vec2<f32>(1,-1), vec2<f32>(1,1));
-
     var out: VertexOutput; out.uv = pos[vIdx];
-    
     let totalAtoms = arrayLength(&render_atoms);
     if (iIdx < totalAtoms) {
         let a = render_atoms[iIdx];
